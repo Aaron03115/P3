@@ -13,7 +13,7 @@ public class TMState {
      */
     public TMState(int numSymbols) {
         transitions = new Transition[numSymbols + 1];   
- }
+    }
 
     /**
      * Registers a new transition rule.
@@ -23,7 +23,7 @@ public class TMState {
      * @param moveDirection The direction to move ('L' or 'R').
      */
     public void addTransition(int readSymbol, int nextState, int writeSymbol, char moveDirection) {
-        //todo
+        transitions[readSymbol] = new Transition(nextState, writeSymbol, moveDirection);
     }
 
     /**
@@ -39,8 +39,14 @@ public class TMState {
      * Data container for a transition rule.
      */
     public static class Transition {
-        // todo
+        public int nextState;
+        public int writeSymbol;
+        public char moveDirection;
 
+        public Transition(int nextState, int writeSymbol, char moveDirection) {
+            this.nextState = nextState;
+            this.writeSymbol = writeSymbol;
+            this.moveDirection = moveDirection;
         }
     }
 }
